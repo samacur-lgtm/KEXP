@@ -1,0 +1,4 @@
+{
+  "scripts": { "test": "node test/run.js" },
+  "private": true
+}
