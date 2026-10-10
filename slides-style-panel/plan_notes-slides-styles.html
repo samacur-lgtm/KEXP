@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spanner Style Panel: status</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#293A49;--azure:#06A6ED;--orange:#E2672A;--lblue:#CAECF6;--lgray:#D4D8DB;--paper:#F5F6F7;--white:#fff;--muted:#5E7283}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',Helvetica,Arial,sans-serif;color:var(--navy);background:var(--paper);line-height:1.5;font-size:16px}
+header{background:var(--navy);color:var(--white);padding:32px 24px 24px}
+.wrap{max-width:1040px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--azure)}
+h1{font-size:32px;font-weight:400;line-height:1.2;margin:6px 0 10px}
+header p{max-width:720px;color:#DCE4EA}
+.meta{margin-top:14px;font-size:14px;color:#DCE4EA;display:flex;gap:18px;flex-wrap:wrap}
+.meta a{color:var(--lblue)}
+main{padding:8px 24px 64px}
+section{margin-top:40px}
+h2{font-size:24px;font-weight:400;margin-bottom:6px}
+.lede{color:var(--muted);margin-bottom:18px;max-width:720px}
+.panel{background:var(--white);border:1px solid var(--lgray);border-radius:8px;padding:20px}
+svg text{font-family:'Inter',Helvetica,Arial,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.card{background:var(--white);border:1px solid var(--lgray);border-left:4px solid var(--azure);border-radius:8px;padding:16px}
+.card.warn{border-left-color:var(--orange)}
+.card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.card dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.card dd{font-size:14px}
+.tl{list-style:none;border-left:3px solid var(--lgray);margin-left:8px}
+.tl li{position:relative;padding:0 0 18px 22px}
+.tl li::before{content:"";position:absolute;left:-9px;top:5px;width:15px;height:15px;border-radius:50%;background:var(--white);border:3px solid var(--azure)}
+.tl li.next::before{border-color:var(--orange)}
+.tl b{display:block}.tl span{font-size:14px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.5px;text-transform:uppercase;background:var(--navy);color:var(--white);padding:8px 12px}
+td{padding:9px 12px;border-bottom:1px solid var(--lgray);vertical-align:top}
+.pill{display:inline-block;padding:2px 9px;border-radius:11px;font-size:12px;font-weight:700}
+.pill.ok{background:var(--lblue)}.pill.todo{background:#FBE3D6}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;font-size:14px}
+.bar i{display:block;height:18px;border-radius:3px;background:var(--azure)}
+.bar i.o{background:var(--orange)}
+@media(max-width:560px){h1{font-size:26px}.bar{grid-template-columns:80px 1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">Slides styles</div>
+  <h1>Spanner Style Panel: one panel, every deck</h1>
+  <p>A Google Slides sidebar that applies Spanner styles and checks a deck against the house rules from the 2026 slide review. v2 adds the Check tab and is set up to ship once, to the whole domain.</p>
+  <div class="meta"><span>Last updated 2026-10-10</span><a href="plan-slides-styles.md">Plan</a><a href="notes-slides-styles.md">Notes</a></div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <h2>How a deck gets checked</h2>
+  <p class="lede">Data flow of the Check tab. The analyzer in the middle is plain code that is tested outside Google. The dashed line is the fix path back into the deck.</p>
+  <div class="panel">
+  <svg viewBox="0 0 960 190" role="img" aria-label="Data flow: deck, Slides API read, pure analyzer, findings list in the sidebar, fix requests back to the deck" style="width:100%;height:auto">
+    <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#293A49"/></marker></defs>
+    <g font-size="14" text-anchor="middle">
+      <rect x="10" y="60" width="150" height="70" rx="8" fill="#fff" stroke="#293A49" stroke-width="2"/><text x="85" y="91" font-weight="700" fill="#293A49">Open deck</text><text x="85" y="111" fill="#5E7283">in Google Slides</text>
+      <rect x="210" y="60" width="160" height="70" rx="8" fill="#fff" stroke="#293A49" stroke-width="2"/><text x="290" y="91" font-weight="700" fill="#293A49">Slides API</text><text x="290" y="111" fill="#5E7283">one read, whole deck</text>
+      <rect x="420" y="50" width="170" height="90" rx="8" fill="#CAECF6" stroke="#06A6ED" stroke-width="2"/><text x="505" y="82" font-weight="700" fill="#293A49">Analyzer</text><text x="505" y="102" fill="#293A49">19 checks</text><text x="505" y="122" fill="#5E7283">tested in Node</text>
+      <rect x="640" y="60" width="150" height="70" rx="8" fill="#fff" stroke="#293A49" stroke-width="2"/><text x="715" y="91" font-weight="700" fill="#293A49">Check tab</text><text x="715" y="111" fill="#5E7283">findings, Go to, Fix</text>
+      <rect x="820" y="60" width="130" height="70" rx="8" fill="#E2672A"/><text x="885" y="91" font-weight="700" fill="#fff">Fix</text><text x="885" y="111" fill="#fff">batchUpdate</text>
+    </g>
+    <g stroke="#293A49" stroke-width="2" fill="none" marker-end="url(#ar)"><path d="M160 95 H205"/><path d="M370 95 H415"/><path d="M590 95 H635"/><path d="M790 95 H815"/></g>
+    <path d="M885 130 V172 H85 V135" stroke="#E2672A" stroke-width="2" fill="none" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+    <text x="480" y="165" font-size="12" fill="#5E7283" text-anchor="middle">only if the deck has not changed since the check (revision guard)</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Decisions</h2>
+  <p class="lede">Seven decisions shape v2. Details and trade-offs are in the notes.</p>
+  <div class="grid">
+    <div class="card"><h3>Ship as a private add-on</h3><dl><dt>Decision</dt><dd>One add-on installed for the Spanner domain.</dd><dt>Why</dt><dd>Per-deck paste was the barrier, and nothing updated.</dd><dt>Implication</dt><dd>Needs a Workspace admin, once.</dd></dl></div>
+    <div class="card"><h3>Slides advanced service</h3><dl><dt>Decision</dt><dd>Use the Slides service, not a hand-fetched token.</dd><dt>Why</dt><dd>Fewer scopes, and one call reads the whole deck.</dd><dt>Implication</dt><dd>The manifest must enable it.</dd></dl></div>
+    <div class="card"><h3>Analyze JSON, not objects</h3><dl><dt>Decision</dt><dd>Rules are pure functions on one JSON read.</dd><dt>Why</dt><dd>Fast on big decks and testable without Google.</dd><dt>Implication</dt><dd>Each rule ships with a fixture and a test.</dd></dl></div>
+    <div class="card"><h3>Scale to page size</h3><dl><dt>Decision</dt><dd>Sizes are for the 10 in page and scale by width.</dd><dt>Why</dt><dd>The 14 pt floor was measured on that page.</dd><dt>Implication</dt><dd>Styles match on any page size.</dd></dl></div>
+    <div class="card warn"><h3>Fix all only when safe</h3><dl><dt>Decision</dt><dd>Auto-fix yellow and double spaces only.</dd><dt>Why</dt><dd>Size, case and deletions can change meaning.</dd><dt>Implication</dt><dd>Other fixes are one click, with a revision guard.</dd></dl></div>
+    <div class="card"><h3>Six-color palette</h3><dl><dt>Decision</dt><dd>Navy, azure, orange, light blue, light gray, white. Green for sustainability only.</dd><dt>Why</dt><dd>The review's palette-only rule.</dd><dt>Implication</dt><dd>Black and mid gray are flagged.</dd></dl></div>
+    <div class="card warn"><h3>Fix the master once</h3><dl><dt>Decision</dt><dd>"what's next." goes on the End layout, not on slides.</dd><dt>Why</dt><dd>Every reviewed deck was missing it.</dd><dt>Implication</dt><dd>The text box needs one nudge.</dd></dl></div>
+  </div>
+</section>
+
+<section>
+  <h2>What the panel stores, over time</h2>
+  <p class="lede">The style data model grew in small steps. Nothing was renamed, so older decks keep working.</p>
+  <div class="panel"><ul class="tl">
+    <li><b>May 2026: v1</b><span>Text style (font, size, bold, italic, color, spacing, alignment, indent, bullets) and shape style (fill, border, weight, vertical alignment, autofit), saved per deck.</span></li>
+    <li><b>May 2026: brand audit</b><span>Headlines to Regular, caption to italic navy, label to azure, azure hex fixed, Success Box replaced by Azure Block.</span></li>
+    <li><b>Oct 2026: v2</b><span>Adds a highlight color to text styles, sizes stored on the 10 in page, five new built-in styles, and the Check findings with their fix data.</span></li>
+    <li class="next"><b>Next</b><span>Shared styles across decks, if per-deck turns out to be too limiting.</span></li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>What was checked</h2>
+  <p class="lede">Built and tested here: the rules, the fixes and the sidebar. Not yet run: the calls that need Google.</p>
+  <div class="panel">
+    <table>
+      <tr><th>Part</th><th>Status</th><th>How</th></tr>
+      <tr><td>House rules and fix builders</td><td><span class="pill ok">Tested</span></td><td>27 tests on a fixture deck built from the review's findings</td></tr>
+      <tr><td>Sidebar UI</td><td><span class="pill ok">Tested</span></td><td>12 checks in a real browser with a mocked server</td></tr>
+      <tr><td>Slides calls, menu, batchUpdate</td><td><span class="pill todo">Not run</span></td><td>Needs a scratch deck in Google</td></tr>
+      <tr><td>Private add-on publish</td><td><span class="pill todo">Not run</span></td><td>Needs a Workspace admin</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Sessions</h2>
+  <p class="lede">What each session added.</p>
+  <div class="panel"><table><tr><th>Session</th><th>Work done</th></tr>
+    <tr><td>May 2026</td><td>v1 sidebar, styles, capture, cascade, live match, brand audit</td></tr>
+    <tr><td>Oct 2026</td><td>Check tab, page scaling, new styles, table tool, add-on packaging, tests</td></tr></table></div>
+</section>
+
+</div></main>
+</body>
+</html>
