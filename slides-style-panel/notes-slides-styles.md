@@ -6,7 +6,7 @@ Last updated: 2026-10-10
 
 **Decision:** Ship as one private Editor Add-on installed for the Spanner domain. Per-deck paste stays as a fallback only.
 **Why:** Per-deck install was the adoption barrier, and nothing updated after install. An admin-installed add-on puts the menu in every deck and updates everywhere at once.
-**Implication:** Needs a Workspace admin, a Spanner GCP project and a private Marketplace listing. Custom styles still live per deck.
+**Implication:** Needs the Workspace admin (Torence), a Spanner GCP project and a private Marketplace listing. Custom styles still live per deck.
 
 **Decision:** Use the Slides advanced service (`Slides`), not `UrlFetchApp` with a hand-fetched OAuth token.
 **Why:** It needs no manual token, shrinks scopes to `presentations` and `script.container.ui`, and lets the Check tab read the whole deck in one call.
@@ -49,14 +49,16 @@ Finding: `id, rule, severity (error|warn|info), slide, slideId, objectId, messag
 | Date | Work done |
 |---|---|
 | 2026-05-11 | v1: sidebar, built-in styles, capture, cascade, live match, brand audit |
+| 2026-10-10 | Moved tracking files and install guide into `Tools/slides-styles`; code stays in git per the org standard |
 | 2026-10-10 | v2: read the Oct 9 process work, built the Check tab from the slide review, page scaling, new styles, table style, advanced service, add-on packaging plan, tests |
 
 ## Open Questions
 
-1. Who is the Workspace admin for the private Marketplace listing, and is a Spanner GCP project already set up for internal tools?
+1. Torence is the Workspace admin (Mason, 2026-10-10), so he owns the private Marketplace listing and install. Is a Spanner GCP project already set up for internal tools?
 2. What are the exact layout names in the Spanner master (End, title, hero)? The check guesses with regexes.
 3. Should the check run automatically when the panel opens, or stay a button?
 4. Is 140 words per slide the right "dense" threshold, and is color tolerance 30 right? Tune on the five reviewed decks.
 5. Should the template's table style become the master default so the Shapes tab tool is rarely needed?
 6. Should the panel read Spanner-wide custom styles from one place (a shared sheet) so decks share them, or is per-deck enough?
-7. Two Drive folders hold the old panel (`Tools/slides-styles` and `Slides styles`) with the same files. Which one is canonical, and should the other be retired?
+7. Resolved 2026-10-10: `Tools/slides-styles` is the canonical Drive folder (Mason's call). The older `Slides styles` folder is a stale duplicate and can be retired.
+8. The code lives in a personal GitHub repo for now. The org standard is `spanner-product-dev`. Where should it go?

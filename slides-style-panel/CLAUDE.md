@@ -8,6 +8,9 @@ Google Slides sidebar that applies Spanner brand styles and checks a deck agains
 3. `INSTALL.md` (how it ships)
 4. House rules source: `alyssa-slides.md` in the SpannerOS `reference/process-research-261009/` folder, and section 6 of `proposal-program-system-261009.md`. The brand skills (`spanner-brand-visual`, `spanner-brand-voice`) decide anything the review does not.
 
+## Where things live
+Tracking files (`CLAUDE.md`, plan, notes, status page, install guide) live in Drive at `Tools/slides-styles`. The code lives in git, not Drive. The `Code.gs` and `Sidebar.html` still in that Drive folder are the v1 copies and are stale.
+
 ## Stack
 Apps Script (V8) + HtmlService sidebar. Slides advanced service (`Slides`) for batchUpdate and for reading the whole deck. No external services, no secrets.
 

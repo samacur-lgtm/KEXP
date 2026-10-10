@@ -4,7 +4,7 @@ Three ways to get the panel into a deck, from least to most work per deck. Use t
 
 | Way | Per-deck work | Updates | Needs |
 |---|---|---|---|
-| **A. Private add-on for the domain** (recommended) | None. Open any deck: Extensions > Spanner Styles > Open style panel | Automatic for everyone when a new version is published | A Workspace admin, once |
+| **A. Private add-on for the domain** (recommended) | None. Open any deck: Extensions > Spanner Styles > Open style panel | Automatic for everyone when a new version is published | The Workspace admin (Torence), once |
 | **B. Spanner template deck** | None for decks copied from the template | Manual, per deck | Edit access to the template |
 | **C. Paste into one deck** (the old way) | About 5 minutes | Manual | Nothing |
 

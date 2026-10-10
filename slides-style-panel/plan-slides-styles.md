@@ -24,17 +24,18 @@ v2 is built and tested as far as it can be outside Google. The panel keeps its T
 
 | Item | Notes |
 |---|---|
-| Nothing active | Waiting on a scratch-deck test and an admin for the Marketplace step |
+| Nothing active | Waiting on a scratch-deck test and Torence for the Marketplace step |
 
 ## Next Steps
 
 1. **Test in a scratch deck.** Copy the files in (INSTALL.md, way C), open a copy of a real 2026 client deck, run Check, and fix any `SlidesApp` or batchUpdate call that Google rejects. Likeliest trouble: `setBackgroundColor`, `updateTableBorderProperties` fields, `createShape` on a layout, `createAddonMenu`.
 2. **Confirm the master's layout names** and fix `END_LAYOUT_RE` and `FREE_LAYOUT_RE` in `Analyze.gs` to match. Add a fixture from the real master.
-3. **Publish the private add-on** (INSTALL.md, way A). Needs a Workspace admin and a Spanner GCP project.
+3. **Publish the private add-on** (INSTALL.md, way A). Torence is the Workspace admin and owns this step. Needs a Spanner GCP project.
 4. **Fix the Spanner master once**, using the panel on the template deck: "what's next." on the End layout, a master table style, and a Hero image layout. New decks then start correct.
 5. **Run Check on the five reviewed decks** and compare with the review. Tune thresholds (dense slide at 140 words, color tolerance 30) against what it flags.
 6. **Add the program-system checks** once those decisions land: persistent phase timeline slide, "decisions needed today" slide, internal vs client export.
 7. **Plan the Inter font helper** (v1 next step 4): a one-click way to load Inter into a deck.
+8. **Move the code repo to the Spanner GitHub org** (`spanner-product-dev`) and retire the stale v1 `Code.gs` and `Sidebar.html` in this Drive folder once v2 is tested. Drive holds the tracking files only; the code is in git.
 
 ## Key References
 
@@ -43,4 +44,5 @@ v2 is built and tested as far as it can be outside Google. The panel keeps its T
 | Slide review and the 8-point checklist | `alyssa-slides.md`, SpannerOS `reference/process-research-261009/` |
 | Presentation methods (timeline, decisions slide, house rules) | Section 6 of `proposal-program-system-261009.md` |
 | Install and publish steps | `INSTALL.md` |
-| Rule logic | `Rules.gs`, `Analyze.gs`, `Fixes.gs` |
+| Rule logic | `Rules.gs`, `Analyze.gs`, `Fixes.gs` (in git, not in this folder) |
+| Home folder | `Tools/slides-styles` (canonical as of 2026-10-10) |

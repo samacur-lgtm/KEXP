@@ -38,11 +38,7 @@ th{text-align:left;font-size:12px;letter-spacing:.5px;text-transform:uppercase;b
 td{padding:9px 12px;border-bottom:1px solid var(--lgray);vertical-align:top}
 .pill{display:inline-block;padding:2px 9px;border-radius:11px;font-size:12px;font-weight:700}
 .pill.ok{background:var(--lblue)}.pill.todo{background:#FBE3D6}
-.bars{display:flex;flex-direction:column;gap:8px}
-.bar{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;font-size:14px}
-.bar i{display:block;height:18px;border-radius:3px;background:var(--azure)}
-.bar i.o{background:var(--orange)}
-@media(max-width:560px){h1{font-size:26px}.bar{grid-template-columns:80px 1fr}}
+@media(max-width:560px){h1{font-size:26px}}
 </style>
 </head>
 <body>
@@ -79,7 +75,7 @@ td{padding:9px 12px;border-bottom:1px solid var(--lgray);vertical-align:top}
   <h2>Decisions</h2>
   <p class="lede">Seven decisions shape v2. Details and trade-offs are in the notes.</p>
   <div class="grid">
-    <div class="card"><h3>Ship as a private add-on</h3><dl><dt>Decision</dt><dd>One add-on installed for the Spanner domain.</dd><dt>Why</dt><dd>Per-deck paste was the barrier, and nothing updated.</dd><dt>Implication</dt><dd>Needs a Workspace admin, once.</dd></dl></div>
+    <div class="card"><h3>Ship as a private add-on</h3><dl><dt>Decision</dt><dd>One add-on installed for the Spanner domain.</dd><dt>Why</dt><dd>Per-deck paste was the barrier, and nothing updated.</dd><dt>Implication</dt><dd>Needs Torence (Workspace admin), once.</dd></dl></div>
     <div class="card"><h3>Slides advanced service</h3><dl><dt>Decision</dt><dd>Use the Slides service, not a hand-fetched token.</dd><dt>Why</dt><dd>Fewer scopes, and one call reads the whole deck.</dd><dt>Implication</dt><dd>The manifest must enable it.</dd></dl></div>
     <div class="card"><h3>Analyze JSON, not objects</h3><dl><dt>Decision</dt><dd>Rules are pure functions on one JSON read.</dd><dt>Why</dt><dd>Fast on big decks and testable without Google.</dd><dt>Implication</dt><dd>Each rule ships with a fixture and a test.</dd></dl></div>
     <div class="card"><h3>Scale to page size</h3><dl><dt>Decision</dt><dd>Sizes are for the 10 in page and scale by width.</dd><dt>Why</dt><dd>The 14 pt floor was measured on that page.</dd><dt>Implication</dt><dd>Styles match on any page size.</dd></dl></div>
@@ -109,7 +105,7 @@ td{padding:9px 12px;border-bottom:1px solid var(--lgray);vertical-align:top}
       <tr><td>House rules and fix builders</td><td><span class="pill ok">Tested</span></td><td>27 tests on a fixture deck built from the review's findings</td></tr>
       <tr><td>Sidebar UI</td><td><span class="pill ok">Tested</span></td><td>12 checks in a real browser with a mocked server</td></tr>
       <tr><td>Slides calls, menu, batchUpdate</td><td><span class="pill todo">Not run</span></td><td>Needs a scratch deck in Google</td></tr>
-      <tr><td>Private add-on publish</td><td><span class="pill todo">Not run</span></td><td>Needs a Workspace admin</td></tr>
+      <tr><td>Private add-on publish</td><td><span class="pill todo">Not run</span></td><td>Needs Torence, the Workspace admin</td></tr>
     </table>
   </div>
 </section>
@@ -119,7 +115,7 @@ td{padding:9px 12px;border-bottom:1px solid var(--lgray);vertical-align:top}
   <p class="lede">What each session added.</p>
   <div class="panel"><table><tr><th>Session</th><th>Work done</th></tr>
     <tr><td>May 2026</td><td>v1 sidebar, styles, capture, cascade, live match, brand audit</td></tr>
-    <tr><td>Oct 2026</td><td>Check tab, page scaling, new styles, table tool, add-on packaging, tests</td></tr></table></div>
+    <tr><td>Oct 2026</td><td>Check tab, page scaling, new styles, table tool, add-on packaging, tests, move of tracking files to Tools/slides-styles</td></tr></table></div>
 </section>
 
 </div></main>
